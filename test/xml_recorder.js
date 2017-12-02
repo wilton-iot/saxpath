@@ -1,13 +1,17 @@
-var fs      = require('fs');
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 var sax     = require('sax');
 var assert  = require('assert');
+var describe     = require("tape-compat").describe;
+var it     = require("tape-compat").it;
 
-var saxpath = process.env.JS_COV ? require('../lib-cov') : require('../lib');
+var saxpath = require('saxpath');
+var sts = require("string-to-stream");
 
 
 describe('XmlRecorder', function() {
     it('should re-escape values', function(done) {
-        var fileStream = fs.createReadStream('test/data/re-escape.xml');
+        require(["text!saxpath/test/data/re-escape.xml"], function(data) { var fileStream = sts(data);
+
         var saxParser  = sax.createStream(true);
         var streamer   = new saxpath.SaXPath(saxParser, '//node');
 
@@ -28,5 +32,9 @@ describe('XmlRecorder', function() {
         }
 
         fileStream.pipe(saxParser);
+
+        });
     });
 });
+
+require = requireOrig;});

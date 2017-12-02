@@ -1,8 +1,9 @@
-var saxpath = require('../lib');
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var saxpath = require('saxpath/lib');
 var fs = require('fs');
 var sax = require('sax');
 var util = require('util');
-var XMLrecorder = require('../lib/xml_recorder.js');
+var XMLrecorder = require('saxpath/lib/xml_recorder.js');
 
 
 // This custom recorder changes all text to lower case
@@ -28,3 +29,5 @@ streamer.on('match', function(xml) {
 });
 
 fileStream.pipe(saxParser);
+
+require = requireOrig;});

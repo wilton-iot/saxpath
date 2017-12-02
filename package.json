@@ -35,5 +35,15 @@
     "repository": {
         "type": "git",
         "url": "git://github.com/StevenLooman/saxpath.git"
+    },
+    "wilton": {
+        "excludes": [
+          "examples",
+          "lib/xpath_parser.pegjs",
+          "test",
+          "Makefile",
+          "run.js",
+          "sonar-project.properties"
+        ]
     }
 }

@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 function TapeRecorder() {
     this.box = [];  // we got a box full of tapes
     this.deck = {}; // current tape in the deck
@@ -80,3 +81,5 @@ TapeRecorder.prototype.onCloseCDATA = function() {
 
 
 module.exports = TapeRecorder;
+
+require = requireOrig;});

@@ -1,8 +1,9 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 #!/usr/bin/env node
 
 var fs     = require('fs');
 var sax    = require('sax');
-var xps    = require('./lib');
+var xps    = require('saxpath/lib');
 
 //var filename = 'test/bookstore.xml';
 var filename = 'test/inception.xml';
@@ -27,3 +28,5 @@ function main() {
 }
 
 main();
+
+require = requireOrig;});
